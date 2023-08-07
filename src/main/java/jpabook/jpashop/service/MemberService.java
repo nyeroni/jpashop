@@ -16,13 +16,14 @@ public class MemberService {
 
 //    @Autowired
 //    public MemberRepository memberRepository;
+
     private final MemberRepository memberRepository;
 
 
     /**
      *     회원 가입
      */
-    @Transactional
+    @Transactional(readOnly = false)
     public Long join(Member member){
         validateDuplicateMember(member);//중복회원 검증
         memberRepository.save(member);
